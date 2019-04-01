@@ -5,6 +5,9 @@
 
 (setq package-enable-at-startup nil)
 (package-initialize)
+
+(desktop-save-mode 1)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -22,7 +25,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (evil-collection auto-complete-clang-async auto-complete neotree all-the-icons jdee color-theme gruvbox-theme evil)))
+    (whitespace-cleanup-mode evil-org bog auto-complete-c-headers auto-auto-indent ac-html ac-math ac-clang ac-emoji java-snippets yasnippet tabbar 2048-game telephone-line powerline emojify magit evil-collection auto-complete-clang-async auto-complete neotree all-the-icons jdee color-theme gruvbox-theme evil)))
  '(scroll-bar-mode (quote right))
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -39,13 +42,30 @@
 (evil-mode 1)
 (evil-collection-init)
 
+;; powerline (telephone)
+(require 'telephone-line)
+;; (setq telephone-line-subseparator-faces '())
+;; (setq telephone-line-primary-left-separator 'telephone-line-cubed-right
+      ;; telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-right
+      ;; telephone-line-primary-right-separator 'telephone-line-cubed-left
+      ;; telephone-line-secondary-right-separator 'telephone-line-cubed-hollow-left)
+;; (setq telephone-line-height 20)
+(telephone-line-mode 1)
+
 ;; icons
 (require 'all-the-icons)
+;; emoji :smile:
+(add-hook 'after-init-hook #'global-emojify-mode)
+
+;; tabs
 
 ;; neotree
 ;; (add-to-list 'load-path "/some/path/neotree")
 (require 'neotree)
+(setq neo-theme 'icons)
 (global-set-key [f8] 'neotree-toggle)
 
 ;; auto-completion (intellisense)
 (ac-config-default)
+
+
