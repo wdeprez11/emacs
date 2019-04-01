@@ -22,7 +22,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (neotree all-the-icons jdee color-theme gruvbox-theme evil)))
+    (evil-collection auto-complete-clang-async auto-complete neotree all-the-icons jdee color-theme gruvbox-theme evil)))
  '(scroll-bar-mode (quote right))
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -31,6 +31,21 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "CTDB" :family "Fira Mono")))))
+
+;; e(vi)l mode
+(setq evil-want-integration t)
+(setq evil-want-keybinding nil)
 (require 'evil)
 (evil-mode 1)
+(evil-collection-init)
+
+;; icons
 (require 'all-the-icons)
+
+;; neotree
+;; (add-to-list 'load-path "/some/path/neotree")
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+
+;; auto-completion (intellisense)
+(ac-config-default)
